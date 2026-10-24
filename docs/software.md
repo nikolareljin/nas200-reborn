@@ -1,3 +1,9 @@
+---
+layout: default
+title: Software baseline
+nav_order: 3
+---
+
 # Software baseline
 
 The intended stack is 64-bit Raspberry Pi OS Lite, OpenMediaVault, Samba,

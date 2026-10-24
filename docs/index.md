@@ -1,3 +1,9 @@
+---
+layout: default
+title: Overview
+nav_order: 1
+---
+
 # nas200-reborn
 
 This documentation prepares a measured Raspberry Pi 3 rebuild of the Linksys

@@ -1,4 +1,4 @@
 title: nas200-reborn
 description: Raspberry Pi 3 rebuild documentation for the Linksys NAS200
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.12.0
 search_enabled: true

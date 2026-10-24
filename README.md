@@ -16,6 +16,10 @@ proposed until they pass the donor evidence and validation procedures in
 ./dev preflight
 ```
 
+Run `./dev install` immediately after every clone and before the first commit.
+It initializes `script-helpers` and configures the local Git hooks, including
+the protected-ref guard for `main`.
+
 The repository is private while its builder guide, GitHub Pages content, and
 hardware validation are prepared. Do not publish or expose an unfinished build
 as a supported modification.
