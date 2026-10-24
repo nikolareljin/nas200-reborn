@@ -19,3 +19,4 @@ the referenced validation evidence exists.
 - [Thermal and reliability](thermal.md)
 - [BOM constraints](bom.md)
 - [Validation](validation.md)
+- [Diagrams and evidence fixtures](artifacts.md)

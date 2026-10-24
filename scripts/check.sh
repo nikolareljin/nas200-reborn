@@ -19,6 +19,12 @@ required=(
   docs/guide/thermal.md
   docs/guide/bom.md
   docs/guide/validation.md
+  docs/guide/artifacts.md
+  docs/guide/diagrams/power-tree.svg
+  docs/guide/diagrams/data-topology.svg
+  docs/guide/diagrams/gpio-interface.svg
+  docs/guide/diagrams/validation-flow.svg
+  docs/fixtures/evidence-record.template.md
 )
 for path in "${required[@]}"; do
   [[ -s "$path" ]] || { echo "missing required file: $path" >&2; exit 1; }
@@ -39,4 +45,5 @@ grep -q 'NAS200-EU_V10_DS_C.pdf' docs/references.md
 grep -q 'NAS200_V10_UG_B-WEB.pdf' docs/references.md
 grep -q './dev install' README.md
 grep -q 'protected-ref' CONTRIBUTING.md
+grep -R -q 'Status: proposed' docs/guide/diagrams
 echo "foundation checks passed"
