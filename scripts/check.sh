@@ -48,7 +48,7 @@ grep -q 'NAS200_V10_UG_B-WEB.pdf' docs/references.md
 grep -q './dev install' README.md
 grep -q 'nas200-pi-placement-concept.png' README.md
 grep -q 'protected-ref' CONTRIBUTING.md
-grep -q 'bundle exec jekyll build' scripts/project.sh
+grep -q 'project_bundle exec jekyll build' scripts/project.sh
 grep -q 'Deploy Pages' .github/workflows/pages.yml
 internal_name='key'"stone"
 for legacy in 'repository is private' 'before public release' "$internal_name" 'do not publish' 'private donor evidence'; do
