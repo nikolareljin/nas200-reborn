@@ -17,7 +17,7 @@ drive combination. Use `/dev/disk/by-id/` or filesystem UUIDs, never transient
 | Separate disks | One ext4 filesystem per drive | No redundancy |
 | RAID1 | mdadm mirror with ext4 above it | Mirror is not backup; setup erases both disks |
 
-Record private drive identity and SMART baseline before destructive setup. A
-bridge must demonstrate stable Linux operation, SMART passthrough, reset
+Record drive identity and SMART baseline before destructive setup. A bridge
+must demonstrate stable Linux operation, SMART passthrough, reset
 recovery, and sufficient cable clearance. Validate reboot, replacement-drive
 rebuild, controlled degraded operation, SMART alerts, and backup restore.

@@ -7,9 +7,8 @@ has_children: true
 
 # Builder guide
 
-This is a proposed, measurement-gated rebuild guide. Do not treat a proposed
-table, diagram, or procedure as a supported donor-specific instruction until
-the referenced validation evidence exists.
+Follow this guide in order. Verify every enclosure-specific measurement and
+electrical value named in a section before applying that section to a device.
 
 - [Power and wiring](power.md)
 - [Mechanical integration](mechanical.md)

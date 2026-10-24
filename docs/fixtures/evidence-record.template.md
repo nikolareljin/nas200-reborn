@@ -6,12 +6,12 @@ nav_exclude: true
 
 # NAS200 validation evidence record
 
-Status: template. Do not commit completed donor records to this repository.
+Status: template. Remove device identifiers and network details before sharing.
 
 ## Test identity
 
 - Date:
-- Donor revision or private identifier:
+- Enclosure revision:
 - Operator:
 - Ambient temperature:
 - Applicable guide section:
@@ -19,7 +19,7 @@ Status: template. Do not commit completed donor records to this repository.
 ## Configuration
 
 - Pi model and OS image checksum:
-- Drive models and capacities [private record reference only]:
+- Drive models and capacities:
 - SATA-to-USB bridge model and USB identity:
 - Power adapter, buck converter, fuse values, and wire gauge:
 
@@ -34,4 +34,4 @@ Status: template. Do not commit completed donor records to this repository.
 - Result:
 - Failure symptoms, if any:
 - Follow-up required:
-- Reviewed public extract:
+- Shared record location:

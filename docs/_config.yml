@@ -1,4 +1,6 @@
 title: nas200-reborn
-description: Raspberry Pi 3 rebuild documentation for the Linksys NAS200
+description: Raspberry Pi 3 rebuild guide for the Linksys NAS200
+url: "https://nikolareljin.github.io"
+baseurl: "/nas200-reborn"
 remote_theme: just-the-docs/just-the-docs@v0.12.0
 search_enabled: true

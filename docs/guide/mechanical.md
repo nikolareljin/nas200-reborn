@@ -24,6 +24,6 @@ Use a short internal Ethernet lead to a panel-mount coupler or a measured rear
 opening. Reuse an existing opening when possible. An external USB extension is
 optional and must not share a weak unpowered hub with both internal drives.
 
-Do not publish a printable mount until it includes measured NAS200 attachment
-coordinates, keepouts, Pi hole spacing, standoff height, airflow openings,
-donor revision, and measurement date.
+Any printable mount must include measured NAS200 attachment coordinates,
+keepouts, Pi hole spacing, standoff height, airflow openings, enclosure
+revision, and measurement date.

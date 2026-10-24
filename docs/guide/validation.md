@@ -18,7 +18,7 @@ nav_order: 8
 | Thermal | Closed-lid soak | No throttling, reset, error, or unsafe heat |
 | Recovery | Boot media and bridge failure | Runbook restores access without changing data disks |
 
-Keep raw command output, measurements, hardware revision, drive model, and
-failures in private donor evidence. Do not publish a completed-builder claim
-until every v1 row passes on one documented donor. Untested alternatives remain
-proposed.
+Keep command output, measurements, hardware revision, drive model, and failures
+with the build record. Remove device identifiers and network details before
+sharing records. Complete every row before relying on an alternative part or
+configuration.
