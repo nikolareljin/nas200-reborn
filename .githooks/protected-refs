@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# protected-refs: refuse pushes that would change a protected ref.
+#
+# Installed by the fleet's repository-protection tooling. GitHub refuses branch
+# protection on a private repository without GitHub Pro, so this is the
+# enforcement.
+#
+#   main              no push, no deletion: changes arrive by pull request
+#   release/**        pushes allowed, force-push and deletion refused
+#   tags/production   may be created, never moved or deleted
+#
+# Reads git's pre-push input on stdin ("<local ref> <local sha> <remote ref>
+# <remote sha>" per line). Exit 1 when any ref is refused.
+set -uo pipefail
+
+refused=0
+# shellcheck disable=SC2034
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [[ -n "${remote_ref:-}" ]] || continue
+  case "$remote_ref" in
+    refs/heads/main)
+      echo "[protected-refs] push to main refused; open a pull request instead." >&2
+      refused=1 ;;
+    refs/heads/release/*)
+      if [[ "$local_sha" =~ ^0+$ ]]; then
+        echo "[protected-refs] deleting ${remote_ref#refs/heads/} refused." >&2
+        refused=1
+      elif ! [[ "$remote_sha" =~ ^0+$ ]] \
+           && ! git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null; then
+        # Also refused when the remote commit is not known locally: git could
+        # only push it with --force, which is what this prevents.
+        echo "[protected-refs] force-push to ${remote_ref#refs/heads/} refused." >&2
+        refused=1
+      fi ;;
+    refs/tags/production)
+      if ! [[ "$remote_sha" =~ ^0+$ ]]; then
+        echo "[protected-refs] moving or deleting the production tag refused." >&2
+        refused=1
+      fi ;;
+  esac
+done
+exit "$refused"
