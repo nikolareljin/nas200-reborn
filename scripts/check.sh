@@ -1,13 +1,32 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-required=(README.md LICENSE CONTRIBUTING.md SECURITY.md docs/index.md docs/hardware.md docs/software.md docs/references.md)
+required=(
+  README.md
+  LICENSE
+  CONTRIBUTING.md
+  SECURITY.md
+  docs/index.md
+  docs/hardware.md
+  docs/software.md
+  docs/references.md
+  docs/guide/index.md
+  docs/guide/power.md
+  docs/guide/mechanical.md
+  docs/guide/gpio.md
+  docs/guide/storage.md
+  docs/guide/software.md
+  docs/guide/thermal.md
+  docs/guide/bom.md
+  docs/guide/validation.md
+)
 for path in "${required[@]}"; do
   [[ -s "$path" ]] || { echo "missing required file: $path" >&2; exit 1; }
 done
 
 bash -n dev build test site scripts/check.sh scripts/project.sh
-for page in docs/*.md; do
+shopt -s globstar nullglob
+for page in docs/**/*.md; do
   [[ "$(head -n 1 "$page")" == '---' ]] || {
     echo "missing Jekyll front matter: $page" >&2
     exit 1
