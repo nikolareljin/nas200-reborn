@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Pre-push: protected refs first (.githooks/protected-refs), then this
+# repository's script-helpers preflight, wherever it is vendored.
+#
+# Runs from the shared script-helpers hook, which hands over to this file, or
+# directly once per clone: git config core.hooksPath .githooks
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+refs=""
+[[ -t 0 ]] || refs="$(cat)"
+printf '%s' "${refs:+$refs$'\n'}" | bash .githooks/protected-refs
+
+# SKIP_PREFLIGHT=1 skips the checks and nothing else. Without it the only way
+# past a failing suite is --no-verify, which also drops the ref protection
+# above -- trading a test run for the thing this hook exists to enforce.
+if [[ "${SKIP_PREFLIGHT:-}" == "1" ]]; then
+  echo "[pre-push] SKIP_PREFLIGHT=1 - checks skipped; protected refs still enforced."
+  exit 0
+fi
+
+# This repository's script-helpers preflight: the first match among the
+# locations script-helpers' templates/dev-cli/_bootstrap.sh searches.
+preflight=""
+for dir in scripts/script-helpers vendor/script-helpers script-helpers scripts/helpers \
+           tools/script-helpers .script-helpers externals/script-helpers; do
+  if [[ -f "$dir/scripts/preflight.sh" ]]; then
+    preflight="$dir/scripts/preflight.sh"
+    break
+  fi
+done
+
+if [[ -z "$preflight" ]]; then
+  echo "[pre-push] no script-helpers preflight here; only protected refs checked."
+  exit 0
+fi
+
+# preflight exits 0 when every check passed, 1 when one failed, 2 on bad
+# arguments and 3 when it found no stack to check. 3 is not a failure.
+rc=0
+bash "$preflight" --quick || rc=$?
+case "$rc" in
+  0) ;;
+  3) echo "[pre-push] preflight found no stack to check; only protected refs checked." ;;
+  *) echo "[pre-push] preflight failed (exit $rc) - push refused." >&2
+     echo "[pre-push]   SKIP_PREFLIGHT=1 git push   checks only; refs still protected" >&2
+     exit "$rc" ;;
+esac
