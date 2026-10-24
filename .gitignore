@@ -1,5 +1,8 @@
 out/
 site/
+_site/
+vendor/bundle/
+.bundle/
 vendor/
 .jekyll-cache/
 .venv/

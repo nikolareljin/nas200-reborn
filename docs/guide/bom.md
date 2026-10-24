@@ -7,10 +7,9 @@ nav_order: 7
 
 # BOM constraints
 
-The first BOM specifies constraints, not approved marketplace listings. Every
-future approved line needs quantity, manufacturer part number, electrical and
-mechanical constraints, vendor URL, price, retrieval date, substitute policy,
-and validation status.
+The BOM defines selection constraints. Record quantity, manufacturer part
+number, electrical and mechanical constraints, vendor URL, price, retrieval
+date, substitute policy, and validation status for each selected part.
 
 | Item | Qty | Required specification |
 |---|---:|---|

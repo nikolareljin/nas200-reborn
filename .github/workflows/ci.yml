@@ -11,6 +11,7 @@ jobs:
     with:
       timeout_minutes: 15
       submodules: recursive
+      install_command: bundle config set path vendor/bundle && bundle install
       lint_command: |
         sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck
         shellcheck -S warning -x dev build test site scripts/check.sh scripts/project.sh

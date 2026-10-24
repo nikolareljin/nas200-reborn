@@ -1,20 +1,19 @@
 # nas200-reborn
 
-Private preparation for a Raspberry Pi 3 Model B rebuild of the Linksys NAS200.
+Rebuild a Linksys NAS200 around a Raspberry Pi 3 Model B while retaining its
+two stacked 3.5-inch drive bays.
 
-![Proposed NAS200 Raspberry Pi placement concept](docs/assets/images/nas200-pi-placement-concept.png)
+![NAS200 Raspberry Pi placement illustration](docs/assets/images/nas200-pi-placement-concept.png)
 
-Proposed placement concept: the Pi is shown in the lid volume above the upper
-drive. This visualization is not a donor photograph or a measured fit. The
-mechanical clearance, mounting points, and cable routing remain validation
-gates before the layout becomes a supported build instruction.
+The illustration shows the intended Pi location in the lid volume above the
+upper drive. Confirm clearance, mounting points, and cable routing on the
+enclosure before installation.
 
-The supported target preserves the NAS200 enclosure and its upper and lower
-3.5-inch drive bays. Electrical, mechanical, and front-panel claims remain
-proposed until they pass the donor evidence and validation procedures in
-`docs/`.
+Start with the [builder guide](docs/guide/index.md): inspect the enclosure,
+bench-test the power path, install the drives and Pi, configure storage, then
+run the validation checklist.
 
-## Development
+## Build the documentation
 
 ```bash
 ./dev install
@@ -23,15 +22,18 @@ proposed until they pass the donor evidence and validation procedures in
 ./dev preflight
 ```
 
-Run `./dev install` immediately after every clone and before the first commit.
-It initializes `script-helpers` and configures the local Git hooks, including
-the protected-ref guard for `main`.
+`./dev install` initializes submodules, installs the Ruby documentation
+dependencies, and configures local Git hooks. `./site` serves the built site
+locally after installation.
 
-The repository is private while its builder guide, GitHub Pages content, and
-hardware validation are prepared. Do not publish or expose an unfinished build
-as a supported modification.
+## Build sequence
+
+1. Read [hardware requirements](docs/hardware.md) and source the BOM.
+2. Follow [power and wiring](docs/guide/power.md) before connecting the Pi or drives.
+3. Complete [mechanical integration](docs/guide/mechanical.md) and [storage setup](docs/guide/storage.md).
+4. Configure the operating system and services from [software setup](docs/guide/software.md).
+5. Record the required checks in [validation](docs/guide/validation.md).
 
 ## Documentation
 
-Start with [the documentation index](docs/index.md). It distinguishes
-documented NAS200 facts from proposed wiring and measured donor evidence.
+The GitHub Pages site publishes [the documentation index](docs/index.md).
