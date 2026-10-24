@@ -7,12 +7,13 @@ for path in "${required[@]}"; do
 done
 
 bash -n dev build test site scripts/check.sh scripts/project.sh
-while IFS= read -r page; do
+shopt -s globstar nullglob
+for page in docs/**/*.md; do
   [[ "$(head -n 1 "$page")" == '---' ]] || {
     echo "missing Jekyll front matter: $page" >&2
     exit 1
   }
-done < <(find docs -type f -name '*.md' -print)
+done
 grep -qx 'remote_theme: just-the-docs/just-the-docs@v0.12.0' docs/_config.yml
 grep -R -Eq 'proposed|Proposed' docs
 grep -q 'Linksys NAS200' docs/hardware.md
