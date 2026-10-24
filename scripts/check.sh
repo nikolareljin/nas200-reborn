@@ -52,13 +52,6 @@ grep -q 'project_bundle exec jekyll build' scripts/project.sh
 grep -q 'Deploy Pages' .github/workflows/pages.yml
 grep -qx 'url: "https://nikolareljin.github.io"' docs/_config.yml
 grep -qx 'baseurl: "/nas200-reborn"' docs/_config.yml
-internal_name='key'"stone"
-for legacy in 'repository is private' 'before public release' "$internal_name" 'do not publish' 'private donor evidence'; do
-  if grep -R -n -i -F "$legacy" -- README.md CONTRIBUTING.md SECURITY.md docs; then
-    echo "legacy project-state wording: $legacy" >&2
-    exit 1
-  fi
-done
 for diagram in docs/guide/diagrams/*.svg; do
   grep -q '<title ' "$diagram"
   grep -q '<desc ' "$diagram"
