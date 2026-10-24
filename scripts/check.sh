@@ -7,6 +7,6 @@ for path in "${required[@]}"; do
 done
 
 bash -n dev build test site scripts/check.sh scripts/project.sh
-rg -q 'proposed|Proposed' docs
-rg -q 'Linksys NAS200' docs/hardware.md
+grep -R -Eq 'proposed|Proposed' docs
+grep -q 'Linksys NAS200' docs/hardware.md
 echo "foundation checks passed"
