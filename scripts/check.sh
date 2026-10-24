@@ -50,6 +50,8 @@ grep -q 'nas200-pi-placement-concept.png' README.md
 grep -q 'protected-ref' CONTRIBUTING.md
 grep -q 'project_bundle exec jekyll build' scripts/project.sh
 grep -q 'Deploy Pages' .github/workflows/pages.yml
+grep -qx 'url: "https://nikolareljin.github.io"' docs/_config.yml
+grep -qx 'baseurl: "/nas200-reborn"' docs/_config.yml
 internal_name='key'"stone"
 for legacy in 'repository is private' 'before public release' "$internal_name" 'do not publish' 'private donor evidence'; do
   if grep -R -n -i -F "$legacy" -- README.md CONTRIBUTING.md SECURITY.md docs; then

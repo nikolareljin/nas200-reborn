@@ -39,6 +39,8 @@ project_build() {
     ""|docs)
       bash "$DEV_REPO_ROOT/scripts/check.sh"
       project_bundle exec jekyll build --source "$DEV_REPO_ROOT/docs" --destination "$DEV_REPO_ROOT/_site"
+      grep -q 'href="/nas200-reborn/' "$DEV_REPO_ROOT/_site/index.html"
+      grep -q 'src="/nas200-reborn/assets/images/nas200-pi-placement-concept.png"' "$DEV_REPO_ROOT/_site/index.html"
       ;;
     *) not_applicable build "only documentation checks exist in the foundation release" ;;
   esac
