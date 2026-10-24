@@ -11,6 +11,7 @@ NAS200. It is not yet a finished builder guide.
 
 - [Hardware baseline](hardware.md)
 - [Software baseline](software.md)
+- [Builder guide](guide/index.md)
 - [References](references.md)
 
 Every claim is documented, measured, proposed, or prohibited. Proposed wiring
