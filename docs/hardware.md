@@ -1,6 +1,6 @@
 # Hardware baseline
 
-The NAS200 has upper and lower 3.5-inch SATA bays. Its documented input is
+The Linksys NAS200 has upper and lower 3.5-inch SATA bays. Its documented input is
 12 V DC at 5 A. SATA drives require both 12 V and regulated 5 V rails; do not
 wire a drive or Raspberry Pi directly to 12 V.
 
