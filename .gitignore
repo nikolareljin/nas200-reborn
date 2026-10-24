@@ -1,0 +1,9 @@
+out/
+site/
+vendor/
+.jekyll-cache/
+.venv/
+__pycache__/
+*.pyc
+.env
+evidence/
