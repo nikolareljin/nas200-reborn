@@ -45,5 +45,12 @@ grep -q 'NAS200-EU_V10_DS_C.pdf' docs/references.md
 grep -q 'NAS200_V10_UG_B-WEB.pdf' docs/references.md
 grep -q './dev install' README.md
 grep -q 'protected-ref' CONTRIBUTING.md
-grep -R -q 'Status: proposed' docs/guide/diagrams
+for diagram in docs/guide/diagrams/*.svg; do
+  grep -q '<title ' "$diagram"
+  grep -q '<desc ' "$diagram"
+  case "$(basename "$diagram")" in
+    validation-flow.svg) grep -q 'Status: documented process' "$diagram" ;;
+    *) grep -q 'Status: proposed' "$diagram" ;;
+  esac
+done
 echo "foundation checks passed"
