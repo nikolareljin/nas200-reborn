@@ -10,6 +10,7 @@ required=(
   docs/hardware.md
   docs/software.md
   docs/references.md
+  docs/assets/images/nas200-pi-placement-concept.png
   docs/guide/index.md
   docs/guide/power.md
   docs/guide/mechanical.md
@@ -38,5 +39,6 @@ grep -q 'Linksys NAS200' docs/hardware.md
 grep -q 'NAS200-EU_V10_DS_C.pdf' docs/references.md
 grep -q 'NAS200_V10_UG_B-WEB.pdf' docs/references.md
 grep -q './dev install' README.md
+grep -q 'nas200-pi-placement-concept.png' README.md
 grep -q 'protected-ref' CONTRIBUTING.md
 echo "foundation checks passed"
