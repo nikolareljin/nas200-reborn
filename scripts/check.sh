@@ -28,10 +28,17 @@ required=(
   docs/guide/diagrams/gpio-interface.svg
   docs/guide/diagrams/validation-flow.svg
   docs/fixtures/evidence-record.template.md
+  docs/googlefb1695ee9a07673e.html
 )
 for path in "${required[@]}"; do
   [[ -s "$path" ]] || { echo "missing required file: $path" >&2; exit 1; }
 done
+
+# Search Console compares this file byte for byte: no front matter, no trailing newline.
+[[ "$(cat docs/googlefb1695ee9a07673e.html; printf x)" == 'google-site-verification: googlefb1695ee9a07673e.htmlx' ]] || {
+  echo "docs/googlefb1695ee9a07673e.html is not the Search Console ownership file" >&2
+  exit 1
+}
 
 bash -n dev build test site scripts/check.sh scripts/project.sh
 shopt -s globstar nullglob
