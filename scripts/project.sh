@@ -41,6 +41,8 @@ project_build() {
       project_bundle exec jekyll build --source "$DEV_REPO_ROOT/docs" --destination "$DEV_REPO_ROOT/_site"
       grep -q 'href="/nas200-reborn/' "$DEV_REPO_ROOT/_site/index.html"
       grep -q 'src="/nas200-reborn/assets/images/nas200-pi-placement-concept.png"' "$DEV_REPO_ROOT/_site/index.html"
+      # Jekyll must copy the Search Console ownership file to the site root unchanged.
+      cmp -s "$DEV_REPO_ROOT/docs/googlefb1695ee9a07673e.html" "$DEV_REPO_ROOT/_site/googlefb1695ee9a07673e.html"
       ;;
     *) not_applicable build "only documentation checks exist in the foundation release" ;;
   esac
